@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Solway&display=swap');
+* {
+	margin: 0;
+	font-family: 'Solway', sans-serif;
+}
+html, body, #root, .body-page {
+	height: 100%;
+}
+.logo {
+	width: 4%;
+}
+.navbar {
+	width: 100%;
+	height: 10%;
+	align-content: center;
+	display: flex;
+	align-items: center;
+	flex-flow: row;
+	justify-content: center;
+	box-shadow: 1px 1px 4px 1px #888888;
+}
+.nav-list-left, .nav-list-right {
+	display: flex;
+	list-style-type: none;
+	padding: 0;
+	margin-top: 1%;
+	position: relative;
+}
+.nav-list-left li a, .nav-list-right li a {
+	text-transform: uppercase;
+}
+.nav-list-left {
+	margin-right: 5%;
+}
+.nav-list-right {
+	margin-left: 5%;
+}
+.nav-list-right li {
+	margin-right: 1.4em;
+}
+.nav-list-left li {
+	margin-left: 1.4em;
+}

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen&display=swap');
+* {
+	margin: 0;
+	font-family: 'Oxygen', sans-serif;
+}
+html, body, #root, .body-page {
+	height: 100%;
+}
+.body-page {
+	display: flex;
+	height: 100%;
+
+}
+.wallpaper-image {
+	background-image: url('../../assets/images/LoginWallpaper.jpg');
+	position: relative;
+	height: 100%;
+	width: 65%;
+}
+.form-box {
+	width: 27%;
+	display: flex;
+	flex-flow: column;
+	margin-left: 4%;
+	margin-right: 4%;
+}
+.input-field {
+	display: block;
+	width: 98.8%;
+	border: none;
+	border-bottom: 1.5px solid #f2e8e6;
+	margin-bottom: 9%;
+	margin-top: 3%;
+	line-height: 2em;
+	font-size: 1.1em;
+}
+.input-field:focus {
+	box-shadow: 0 0 0 0;
+	border: 0 none;
+	outline: 0;
+}
+.form-box div label {
+	font-size: 1.3em;
+}
+.signup-title {
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+.submit-button {
+	width: 50%;
+	padding: 1em;
+	border-radius: 25px;
+	border: 0;
+	background: linear-gradient(to bottom, #f9e8eb 50%, #f5e8eb 100%);
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 1.2em;
+	color: #111111;
+}
+.input-field:focus {
+	border-bottom: 1px solid pink;
+}
+.login-box {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 5%;
+}
+.login-button {
+	margin-left: 15%;
+	color: lightcoral;
+	cursor: pointer;
+	font-size: 1.2em;
+}
+::-webkit-input-placeholder {
+	color: lightgray;
+}
+:-moz-placeholder { /* Firefox 18- */
+	color: lightgray;  
+}
+::-moz-placeholder {  /* Firefox 19+ */
+	color: lightgray;  
+}
+:-ms-input-placeholder {  
+	color: lightgray;  
+}
