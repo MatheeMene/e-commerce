@@ -1,0 +1,33 @@
+.add-product-title {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.body-add-product {
+    margin-left: 8%;
+    margin-right: 8%;
+}
+.banner-add-product {
+    width: 100%;
+    height: 12vh;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../assets/images/BannerAddProduct.png');
+}
+.button-add-product {
+    margin-bottom: 2%;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: whitesmoke;
+    border: 1px solid #000;
+    transition: .7s;
+}
+.button-add-product:hover {
+    transition: .7s;
+    background-color: #cf68b5;
+    border-color: whitesmoke;
+    border-radius: 5px;
+}

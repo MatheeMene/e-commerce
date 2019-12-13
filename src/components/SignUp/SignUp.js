@@ -1,7 +1,6 @@
 import React from 'react';
 //COMPONENTS
 import useSignUpForm from '../../Hooks/useSignUpForm';
-import Header from '../shared/Header/Header'
 import './SignUp.css'
 
 const SignUp = () => {

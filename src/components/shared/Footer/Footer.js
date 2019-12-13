@@ -1,11 +1,13 @@
 import React from 'react';
+//STYLE
+import './Footer.css'
 
 const Footer = () => {
 
 	return (
-		<div>
-			<p>Footer</p>
-		</div>
+		<footer className="body-footer">
+			<p>FOOTER TEMPORARIO, NAO ME JULGA</p>
+		</footer>
 	);
 }
 

@@ -4,6 +4,9 @@ const bdParser = require('body-parser');
 const sql = require("mssql");
 const config = require('./database');
 
+//echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+//sudo sysctl -p
+
 // BECAUSE CORS POLICY
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

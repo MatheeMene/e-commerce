@@ -5,16 +5,16 @@
 }
 html, body, #root, .body-page {
 	height: 100%;
+	position: relative;
 }
 .body-page {
 	display: flex;
 	height: 100%;
-
 }
 .wallpaper-image {
 	background-image: url('../../assets/images/LoginWallpaper.jpg');
 	position: relative;
-	height: 100%;
+	height: 97vh;
 	width: 65%;
 }
 .form-box {
