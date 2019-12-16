@@ -1,8 +1,9 @@
 const express = require('express');
-const app = express();
-const bdParser = require('body-parser');
+const bodyParser = require('body-parser');
 const sql = require("mssql");
 const config = require('./database');
+const app = express();
+const router = express.Router();
 
 //echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 //sudo sysctl -p
@@ -14,23 +15,56 @@ app.use(function(req, res, next) {
   next();
 });
 
-// app.get('/login', (req, res) => {
-// 	sql.connect(config, error => {
+//configurando o body parser para pegar POSTS mais tarde
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-// 		if (error) console.log(error);
+router.get('/', (req, res) => res.send('Home'));
+app.use('/', router);
 
-// 		request = new sql.Request();
+router.post('/createproduct', (req, res) => {
 
-// 		request.query('select * from person', (error, recordset) => {
+  const title       = req.body.title;
+  const description = req.body.description;
+  const quantity    = parseInt(req.body.quantity);
+  const price       = parseFloat(req.body.price);
+  const imageUrl    = req.body.imageUrl;
+  const weekOffer   = req.body.weekOffer;
 
-// 			if (error) res.send('deu')
+  sql.connect(config, err => {
+      
+    if (err) console.log(err);
 
-// 			res.send(recordset);
-			
-// 		});
-// 	});
-// });
+    const request = new sql.Request();
+    request.query(`INSERT INTO product(title, description, quantity, price, image_url, week_offer) 
+    VALUES('${ title }', '${ description }', '${ quantity }', '${ price }', '${ imageUrl }', '${ weekOffer }')`, (err, recordset) => {
+      
+      if (err) console.log(err)
+      
+      res.send('product has been added');
+      
+    });
+  });
+});
 
+router.get('/weekoffer', (req, res) => {
+
+  sql.connect(config, err => {
+      
+    if (err) console.log(err);
+
+    const request = new sql.Request();
+    request.query(`SELECT * FROM product WHERE week_offer = 'true' `, (err, recordset) => {
+      
+      if (err) console.log(err)
+      
+      res.send(recordset);
+      
+    });
+  });
+
+});
+  
 app.listen(4000, () => {
 	console.log('Server is running..');
 });
