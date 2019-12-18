@@ -1,12 +1,26 @@
 import { useState } from 'react';
 
 const useSignUpForm = callback => {
-	const [inputs, setInputs] = useState({ firstName: '', lastName: '', email: '', password1: '', password2: '' });
+	const [inputs, setInputs] = useState({ firstName: '', lastName: '', email: '', password: '', repeatPassword: '' });
 
 	const handleSubmit = event => {
-		if (event) {
-			event.preventDefault();
-		}
+		event.preventDefault();
+	
+		fetch('http://localhost:4000/createuser', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+
+			body: JSON.stringify({
+				firstName:      inputs.firstName,
+				lastName:       inputs.lastName,
+				email:          inputs.email,
+				password:       inputs.password,
+				repeatPassword: inputs.repeatPassword
+			})
+		});
 	}
 
 	const handleInputChange = event => {

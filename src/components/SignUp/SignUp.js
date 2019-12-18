@@ -33,11 +33,11 @@ const SignUp = () => {
 				</div>
 				<div>
 					<label>Senha</label>
-					<input placeholder="Sua senha" className="input-field" type="password" name="password1" onChange={ handleInputChange } value={ inputs.password1 } />
+					<input placeholder="Sua senha" className="input-field" type="password" name="password" onChange={ handleInputChange } value={ inputs.password1 } />
 				</div>
 				<div>
 					<label>Confirmar senha</label>
-					<input placeholder="Confirme sua senha" className="input-field" type="password" name="password2" onChange={ handleInputChange } value={ inputs.password2 } />
+					<input placeholder="Confirme sua senha" className="input-field" type="password" name="repeatPassword" onChange={ handleInputChange } value={ inputs.password2 } />
 				</div>
 				<div className="login-box">
 					<button className="submit-button" type="submit">Cadastrar</button>
