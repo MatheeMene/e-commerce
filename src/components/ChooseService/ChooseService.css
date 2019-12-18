@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+* {
+	margin: 0;
+}
+.body-product {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.add-week-offers, .add-all-products,
+.see-all-products, .see-week-offers {
+    border: 0;
+    margin: 0;
+    padding-top: 10em;
+    padding-bottom: 10em;
+    text-align: center;
+    font-size: 1.6em;
+    color: black;
+    font-weight: bold;
+    transition: .8s;
+    font-family: 'Ubuntu';
+}
+.add-week-offers:hover, .add-all-products:hover,
+.see-all-products:hover, .see-week-offers:hover {
+    color: whitesmoke;
+    transition: .8s;
+    text-decoration: none;
+}
+
+.add-week-offers {
+    border-bottom: 8px solid black;
+    border-right: 8px solid black;
+    width: 50%;
+    transition: .8s;
+}
+.add-week-offers:hover {
+    border-bottom: 8px solid whitesmoke;
+    border-right: 8px solid whitesmoke;
+    background-color: rgba(128, 0, 128, .5);
+    transition: .8s;
+    width: 50%;
+}
+
+.add-all-products {
+    border-bottom: 8px solid black;
+    border-left: 8px solid black;
+    width: 50%;
+}
+.add-all-products:hover {
+    border-bottom: 8px solid whitesmoke;
+    border-left: 8px solid whitesmoke;
+    background-color:  rgba(65, 105, 225, .5);
+    transition: .8s;
+    width: 50%;
+}
+
+.see-all-products {
+    border-top: 8px solid black;
+    border-right: 8px solid black;
+    width: 50%;
+}
+.see-all-products:hover {
+    border-top: 8px solid whitesmoke;
+    border-right: 8px solid whitesmoke;
+    background-color:  rgba(169, 169, 169, .7);
+    transition: .8s;
+    width: 50%;
+}
+
+.see-week-offers {
+    border-top: 8px solid black;
+    border-left: 8px solid black;
+    width: 50%;
+}
+.see-week-offers:hover {
+    border-top: 8px solid whitesmoke;
+    border-left: 8px solid whitesmoke;
+    background-color:  rgba(152, 251, 152);
+    transition: .8s;
+    width: 50%;
+}

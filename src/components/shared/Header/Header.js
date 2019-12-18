@@ -6,14 +6,14 @@ import Logo from '../../../assets/images/logo.png'
 
 const Header = () => {
 	
-  return(
-    <header className='navbar'>
+	return(
+		<header className='navbar'>
 			<ul className='nav-list-left'>
 				<li>
 					<Link to='/'>Home</Link>
 				</li>
 				<li>
-					<Link to='/products'>Products</Link>
+					<Link to='/products'>Services</Link>
 				</li>
 			</ul>
 			<img className='logo' src={ Logo } alt='Logo' />
@@ -25,7 +25,7 @@ const Header = () => {
 					<Link to='/signup'>SignUp</Link>
 				</li>
 			</ul>
-    </header>
+		</header>
 	);
 
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const useAddProductForm = () => {
-	const [inputs, setInputs] = useState({ title: '', description: '', quantity: '', price: '', imageUrl: '', weekOffer: '' });
+	const [inputs, setInputs] = useState({ title: '', description: '', quantity: '', price: '', imageUrl: '', weekOffer: 'false' });
 
 	const handleSubmit = event => {
 		if (event) {
