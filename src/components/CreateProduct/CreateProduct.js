@@ -35,7 +35,7 @@ const CreateProduct = () => {
 				</Form.Group>
 				<Form.Group>
 					<Form.Label>Week Offer?</Form.Label>
-					<Form.Control type="text" placeholder="Is a week offer? true or false" name="weekOffer" onChange={ handleInputChange } value={ inputs.weekOffer } />
+					<Form.Control type="text" placeholder="Is a week offer? true or false" name="weekOffer" onChange={ handleInputChange } value={ inputs.weekOffer } disabled />
 				</Form.Group>
 
 				<div className="banner-add-product">
