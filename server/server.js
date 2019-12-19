@@ -98,7 +98,7 @@ router.get('/weekoffer', (req, res) => {
 				sql.close();
 
 			} else {
-				res.send(recordset);
+				res.send(recordset.recordset);
 				sql.close();
 			}
 

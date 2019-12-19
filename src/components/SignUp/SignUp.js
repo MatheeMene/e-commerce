@@ -1,7 +1,9 @@
 import React from 'react';
-//COMPONENTS
+//Components
 import useSignUpForm from '../../Hooks/useSignUpForm';
 import './SignUp.css'
+//Icons
+import { AiOutlineArrowRight } from 'react-icons/ai'
 
 const SignUp = () => {
 
@@ -41,7 +43,7 @@ const SignUp = () => {
 				</div>
 				<div className="login-box">
 					<button className="submit-button" type="submit">Cadastrar</button>
-					<span className="login-button">Entrar =></span>
+					<span className="login-button">Entrar <AiOutlineArrowRight /></span>
 				</div>
 			</form>
 		</div>
