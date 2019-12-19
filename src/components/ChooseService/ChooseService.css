@@ -40,7 +40,6 @@
     border-right: 8px solid whitesmoke;
     background-color: rgba(128, 0, 128, .5);
     transition: .8s;
-    width: 50%;
 }
 
 .add-all-products {
@@ -53,7 +52,6 @@
     border-left: 8px solid whitesmoke;
     background-color:  rgba(65, 105, 225, .5);
     transition: .8s;
-    width: 50%;
 }
 
 .see-all-products {
@@ -66,7 +64,6 @@
     border-right: 8px solid whitesmoke;
     background-color:  rgba(169, 169, 169, .7);
     transition: .8s;
-    width: 50%;
 }
 
 .see-week-offers {
@@ -79,5 +76,4 @@
     border-left: 8px solid whitesmoke;
     background-color:  rgba(152, 251, 152);
     transition: .8s;
-    width: 50%;
 }

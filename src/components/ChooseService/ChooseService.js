@@ -1,9 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//BOOTSTRAP
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 //STYLE
 import './ChooseService.css';
 
@@ -23,7 +19,7 @@ const ChooseService = () => {
 					See all products
 				</Link>
 				<Link to="/weekoffer" className="see-week-offers">
-						See week offers
+					See week offers
 				</Link>
 			</section>
 		</div>
