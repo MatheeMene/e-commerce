@@ -43,12 +43,9 @@ router.post('/createproduct', (req, res) => {
 
 			if (err) {
 				console.log(err);
-				sql.close();
 			} else {
 				res.send('product has been added');
-				sql.close();
 			}
-
 		});
 	});
 });
@@ -73,12 +70,9 @@ router.post('/createuser', (req, res) => {
 
 			if (err) {
 				console.log(err);
-				sql.close();
 			} else {
 				res.send('user has been added');
-				sql.close();
 			}
-
 		});
 	});
 });
@@ -95,16 +89,27 @@ router.get('/weekoffer', (req, res) => {
 			if (err) {
 
 				console.log(err);
-				sql.close();
 
 			} else {
 				res.send(recordset.recordset);
-				sql.close();
 			}
-
 		});
 	});
+});
 
+router.get('/allproducts', (req, res) => {
+
+	sql.connect(config, err => {
+
+		const request = new sql.Request();
+		request.query(`SELECT * FROM product`, (err, recordset) => {
+			if(err) {
+				console.log(err);
+			} else {
+				res.send(recordset.recordset);
+			}
+		});
+	});
 });
 
 app.listen(4000, () => {
