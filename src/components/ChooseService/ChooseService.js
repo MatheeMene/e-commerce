@@ -15,7 +15,7 @@ const ChooseService = () => {
 				<Link to="/addproduct" className="add-all-products">
 					Add to all products
 				</Link>
-				<Link to="/aiai" className="see-all-products">
+				<Link to="/allproducts" className="see-all-products">
 					See all products
 				</Link>
 				<Link to="/weekoffer" className="see-week-offers">
@@ -23,9 +23,7 @@ const ChooseService = () => {
 				</Link>
 			</section>
 		</div>
-
 	);
-
 }
 
 export default ChooseService;

@@ -2,11 +2,12 @@ import React from 'react';
 //Bootstrap
 import Carousel from 'react-bootstrap/Carousel';
 //Styles
-import FirstImage from '../../assets/images/Carousel_1.jpg';
+import FirstImage  from '../../assets/images/Carousel_1.jpg';
 import SecondImage from '../../assets/images/Carousel_2.jpg';
 import './Home.css';
 //Components
-import WeekOffer from '../WeekOffer/WeekOffer';
+import WeekOffer   from '../WeekOffer/WeekOffer';
+import AllProducts from '../AllProducts/AllProducts'
 
 const Home = () => {
 
@@ -45,9 +46,10 @@ const Home = () => {
 
 			<WeekOffer />
 
+			<AllProducts />
+
 		</div>
 	);
-
 }
 
 export default Home;

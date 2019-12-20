@@ -14,7 +14,7 @@ html, body, #root, .body-page {
 .wallpaper-image {
 	background-image: url('../../assets/images/LoginWallpaper.jpg');
 	position: relative;
-	height: 97vh;
+	padding-top: 50%;
 	width: 65%;
 }
 .form-box {
@@ -56,6 +56,7 @@ html, body, #root, .body-page {
 	cursor: pointer;
 	font-size: 1.2em;
 	color: #111111;
+	margin-bottom: 7%;
 }
 .input-field:focus {
 	border-bottom: 1px solid pink;
