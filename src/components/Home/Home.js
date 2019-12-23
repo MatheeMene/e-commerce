@@ -7,7 +7,7 @@ import SecondImage from '../../assets/images/Carousel_2.jpg';
 import './Home.css';
 //Components
 import WeekOffer   from '../WeekOffer/WeekOffer';
-import AllProducts from '../AllProducts/AllProducts'
+import AllProducts from '../AllProducts/AllProducts';
 
 const Home = () => {
 

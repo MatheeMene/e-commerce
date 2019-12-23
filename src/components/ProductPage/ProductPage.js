@@ -1,7 +1,7 @@
 import React from 'react';
 //Bootstrap
 import Image from 'react-bootstrap/Image';
-import Form  from 'react-bootstrap/Form'
+import Form  from 'react-bootstrap/Form';
 //Styles
 import './ProductPage.css';
 import NumberFormat               from 'react-number-format';

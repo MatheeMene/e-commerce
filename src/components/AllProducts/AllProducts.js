@@ -3,7 +3,7 @@ import Axios from '../../Axios';
 //Styles
 import './AllProducts.css';
 //Components
-import ProductCard from '../shared/ProductCard/ProductCard'
+import ProductCard from '../shared/ProductCard/ProductCard';
 
 const AllProducts = () => {
 

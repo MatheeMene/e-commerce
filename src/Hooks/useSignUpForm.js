@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useSignUpForm = callback => {
+const useSignUpForm = () => {
 	const [inputs, setInputs] = useState({ firstName: '', lastName: '', email: '', password: '', repeatPassword: '' });
 
 	const handleSubmit = event => {

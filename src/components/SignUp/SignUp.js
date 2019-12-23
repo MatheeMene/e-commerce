@@ -1,9 +1,9 @@
 import React from 'react';
 //Components
 import useSignUpForm from '../../Hooks/useSignUpForm';
-import './SignUp.css'
+import './SignUp.css';
 //Icons
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { AiOutlineArrowRight } from 'react-icons/ai';
 
 const SignUp = () => {
 
