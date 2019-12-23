@@ -9,6 +9,7 @@ import CreateProduct from './components/CreateProduct/CreateProduct';
 import SignUp        from './components/SignUp/SignUp';
 import WeekOffers    from './components/WeekOffer/WeekOffer';
 import AllProducts   from './components/AllProducts/AllProducts';
+import ProductPage   from './components/ProductPage/ProductPage';
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
 					<Route exact path="/signup"       component={ SignUp } />
 					<Route exact path="/weekoffer"    component={ WeekOffers } />
 					<Route exact path="/allproducts"  component={ AllProducts } />
+					<Route exact path="/productpage"  component={ ProductPage } />
 				</Switch>
 
 				<Footer />
