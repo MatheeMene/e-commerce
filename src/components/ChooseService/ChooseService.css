@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
 
 * {
-	margin: 0;
+    font-family: 'Work Sans';
 }
 .body-product {
     display: flex;

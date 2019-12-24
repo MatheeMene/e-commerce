@@ -49,3 +49,7 @@
 	font-size: 1.1em;
 	text-transform: uppercase;
 }
+.title, .avaliacao, .description,
+.quantity, .price, .buy {
+	font-family: 'Work Sans';
+}

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Oxygen&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+
 * {
-	margin: 0;
-	font-family: 'Oxygen', sans-serif;
+    font-family: 'Work Sans';
 }
 html, body, #root, .body-page {
 	height: 100%;

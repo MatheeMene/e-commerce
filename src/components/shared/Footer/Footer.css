@@ -1,5 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+
+* {
+    font-family: 'Work Sans';
+}
 .body-footer {
     padding: 2em;
     background-color: #de97cc;
     width: 100%;
+}
+.footer-sections {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: .6%;
+}
+.first-section, .second-section,
+.third-section, .last-section {
+    width: 20%;
+}
+.first-section, .second-section,
+.third-section {
+    margin-right: 19%;
+}
+.first-title, .second-title,
+.third-title, .last-title {
+    font-size: 1.7em;
+}
+.first-section p a {
+    color: #000;
+}
+.first-section a:hover {
+    color: #000;
+    text-decoration: none;
+}
+.follow-us {
+    display: flex;
+    flex-flow: row;
+}
+.follow-us p {
+    font-size: 1.8em;
 }

@@ -1,9 +1,9 @@
-const express = require('express');
+const express    = require('express');
 const bodyParser = require('body-parser');
-const sql = require("mssql");
-const config = require('./database');
-const app = express();
-const router = express.Router();
+const sql        = require("mssql");
+const config     = require('./database');
+const app        = express();
+const router     = express.Router();
 
 //echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 //sudo sysctl -p
@@ -24,7 +24,7 @@ app.use('/', router);
 
 sql.connect(config, err => {
 	
-	if (err) console.log(err);
+	if(err) console.log(err);
 	
 	const request = new sql.Request();
 	
@@ -41,7 +41,7 @@ sql.connect(config, err => {
 		VALUES('${ title }', '${ description }', '${ quantity }', '${ price }', '${ imageUrl }', '${ weekOffer }')`
 		, (err, recordset) => {
 
-			if (err) {
+			if(err) {
 				console.log(err);
 			} else {
 				res.send(recordset);
@@ -61,7 +61,7 @@ sql.connect(config, err => {
 		VALUES('${ name }', '${ surname }', '${ email }', '${ password }', '${ repeatPassword }')`
 		, (err, recordset) => {
 
-			if (err) {
+			if(err) {
 				console.log(err);
 			} else {
 				res.send(recordset);
@@ -73,10 +73,8 @@ sql.connect(config, err => {
 
 		request.query(`SELECT * FROM product WHERE week_offer = 'true'`, (err, recordset) => {
 
-			if (err) {
-
+			if(err) {
 				console.log(err);
-
 			} else {
 				res.send(recordset.recordset);
 			}
@@ -86,6 +84,17 @@ sql.connect(config, err => {
 	router.get('/allproducts', (req, res) => {
 
 		request.query(`SELECT * FROM product`, (err, recordset) => {
+			if(err) {
+				console.log(err);
+			} else {
+				res.send(recordset.recordset);
+			}
+		});
+	});
+
+	router.get('/product/:id', (req, res) => {
+
+		request.query(`SELECT * FROM product WHERE id = ${ req.params.id }`, (err, recordset) => {
 			if(err) {
 				console.log(err);
 			} else {
