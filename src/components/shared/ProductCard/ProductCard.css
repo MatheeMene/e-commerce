@@ -20,16 +20,22 @@
 }
 .buy-product {
     width: 100%;
-    padding-top: .3em;
-    padding-bottom: .3em;
-    border: 0;
-    background-color: lightpink;
-    border-radius: 5px;
-    color: whitesmoke;
+    padding-top: .6em;
+    padding-bottom: .6em;
+    border: 1px solid #000;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    color: #000;
     font-size: 1.1em;
+    transition: .5s;
 }
 .buy-product:focus {
-    outline:0;
+    outline: 0;
+}
+.buy-product:hover {
+    border: 1px solid #cc5490;
+    color: #cc5490;
+    transition: .3s;
 }
 .icon-button {
     font-size: 1.6em;

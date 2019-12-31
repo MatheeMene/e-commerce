@@ -12,20 +12,14 @@ import './ProductCard.css';
 
 const ProductCard = props => {
 
-	const handleClick = event => {
-
-		event.persist();
-		console.log(event.target);
-	}
-
 	return (
 		<Container>
 			<Row>
 				{
 					props.data.map(prod => {
 						return <Col key={ prod.id } md={ 4 }>
-							<Card onClick={ handleClick } style={{ width: '21.5rem' }} className="card-style">
-								<Link className="link-to-pdp">
+							<Card style={{ width: '22rem' }} className="card-style">
+								<Link to={`/productpage/${ prod.id }`} className="link-to-pdp">
 									<Card.Img variant="top" src={ prod.image_url } />
 									<Card.Body className="card-body">
 										<Card.Title className="product-title">
@@ -34,7 +28,7 @@ const ProductCard = props => {
 										<Card.Text>
 											<NumberFormat value={ `${ prod.price }.00` } displayType={ 'text' } thousandSeparator={ true } prefix={ '$' } />
 										</Card.Text>
-										<button className="buy-product">Add to Cart<AiOutlineShoppingCart className="icon-button" /></button>
+										<button className="buy-product">See details<AiOutlineShoppingCart className="icon-button" /></button>
 									</Card.Body>
 								</Link>
 							</Card>
