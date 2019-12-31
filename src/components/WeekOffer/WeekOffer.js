@@ -15,7 +15,7 @@ const WeekOffer = () => {
 		try {
 
 			let { data } = await Axios.get(`/weekoffer`, {});
-			setWeekProducts(data)
+			setWeekProducts(data);
 
 		} catch (err) {
 			console.log(err);

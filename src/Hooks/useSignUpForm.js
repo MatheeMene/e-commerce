@@ -9,7 +9,7 @@ const useSignUpForm = () => {
 		fetch('http://localhost:4000/createuser', {
 			method: 'POST',
 			headers: {
-				'Accept': 'application/json',
+				'Accept':       'application/json',
 				'Content-Type': 'application/json'
 			},
 

@@ -9,7 +9,7 @@ const useAddProductForm = () => {
 		fetch('http://localhost:4000/createproduct', {
 			method: 'POST',
 			headers: {
-				'Accept': 'application/json',
+				'Accept':       'application/json',
 				'Content-Type': 'application/json'
 			},
 
