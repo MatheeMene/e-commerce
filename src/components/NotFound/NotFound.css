@@ -1,0 +1,23 @@
+.body-not-found {
+    width: 100%;
+    padding-top: 9em;
+    padding-bottom: 9em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title-not-found {
+    margin-bottom: 5%;
+}
+.go-home {
+    color: lightpink;
+    transition: .5s;
+}
+.go-home:hover {
+    text-decoration: none;
+    color: lightcoral;
+    transition: .5s;
+}
+.image-not-found {
+    width: 35%;
+}
