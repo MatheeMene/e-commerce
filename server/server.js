@@ -4,6 +4,7 @@ const sql        = require("mssql");
 const config     = require('./database');
 const app        = express();
 const router     = express.Router();
+const PORT       = 4000;
 
 //echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 //sudo sysctl -p
@@ -30,15 +31,15 @@ sql.connect(config, err => {
 	
 	router.post('/createproduct', (req, res) => {
 
-		const title = req.body.title;
+		const title       = req.body.title;
 		const description = req.body.description;
-		const quantity = parseInt(req.body.quantity);
-		const price = parseFloat(req.body.price);
-		const imageUrl = req.body.imageUrl;
-		const weekOffer = req.body.weekOffer;
+		const quantity    = parseInt(req.body.quantity);
+		const price       = parseFloat(req.body.price);
+		const imageUrl    = req.body.imageUrl;
+		const weekOffer   = req.body.weekOffer;
 
 		request.query(`INSERT INTO product(title, description, quantity, price, image_url, week_offer) 
-		VALUES('${ title }', '${ description }', '${ quantity }', '${ price }', '${ imageUrl }', '${ weekOffer }')`
+		VALUES('${ title }', '${ description }', '${ quantity }', '${ price }', '${ imageUrl };', '${ weekOffer }')`
 		, (err, recordset) => {
 
 			if(err) {
@@ -58,7 +59,7 @@ sql.connect(config, err => {
 		const repeatPassword = req.body.repeatPassword;
 
 		request.query(`INSERT INTO person(name, last_name, email, password, repeat_password) 
-		VALUES('${ name }', '${ surname }', '${ email }', '${ password }', '${ repeatPassword }')`
+		VALUES('${ name }', '${ surname }', '${ email }', '${ password }', '${ repeatPassword }';)`
 		, (err, recordset) => {
 
 			if(err) {
@@ -71,7 +72,7 @@ sql.connect(config, err => {
 
 	router.get('/weekoffer', (req, res) => {
 
-		request.query(`SELECT * FROM product WHERE week_offer = 'true'`, (err, recordset) => {
+		request.query(`SELECT * FROM product WHERE week_offer = 'true';`, (err, recordset) => {
 
 			if(err) {
 				console.log(err);
@@ -83,7 +84,7 @@ sql.connect(config, err => {
 
 	router.get('/allproducts', (req, res) => {
 
-		request.query(`SELECT * FROM product`, (err, recordset) => {
+		request.query(`SELECT * FROM product;`, (err, recordset) => {
 			if(err) {
 				console.log(err);
 			} else {
@@ -92,9 +93,24 @@ sql.connect(config, err => {
 		});
 	});
 
-	router.get('/product/:id', (req, res) => {
+	router.post('/product/:id', (req, res) => {
 
-		request.query(`SELECT * FROM product WHERE id = ${ req.params.id }`, (err, recordset) => {
+		const id = req.params.id;
+
+		request.query(`SELECT * FROM product WHERE id = ${ id };`, (err, recordset) => {
+			if(err) {
+				console.log(err);
+			} else {
+				res.send(recordset.recordset);
+			}
+		});
+	});
+
+	router.post('/login', (req, res) => {
+
+		const email = req.body.email;
+
+		request.query(`SELECT email, password FROM person WHERE email = ${ email };`, (err, recordset) => {
 			if(err) {
 				console.log(err);
 			} else {
@@ -104,6 +120,6 @@ sql.connect(config, err => {
 	});
 });
 
-app.listen(4000, () => {
-	console.log('Server is running my king');
+app.listen(PORT, () => {
+	console.log(`Server is running my king, on port -> ${ PORT }`);
 });

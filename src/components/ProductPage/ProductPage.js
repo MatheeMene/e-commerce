@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from '../../Axios';
 //Bootstrap
 import Image from 'react-bootstrap/Image';
 import Form  from 'react-bootstrap/Form';
@@ -8,19 +9,53 @@ import NumberFormat               from 'react-number-format';
 import { AiOutlineShoppingCart }  from "react-icons/ai";
 import { IoMdStar, IoMdStarHalf } from "react-icons/io";
 
-const ProductPage = () => {
+const ProductPage = props => {
+
+	const { match }  = props;
+	const { params } = match; 
+
+	const  [ details, setDetails ] = useState({});
+
+	const listOption = details => {
+
+		let options = [];
+
+		for(let i = 1; i <= details.quantity; i ++) {
+			options.push(<option key={ i }>{ i }</option>);
+		}
+
+		return options;
+	};
+
+	const fetchData = async () => {
+		
+		try {
+
+			let { data } = await Axios.post(`http://localhost:4000/product/${ params.id }`, {});
+			setDetails(data[0]);
+
+		} catch (err) {
+			console.log(err);
+		}
+
+	};
+
+	useEffect(() => {
+
+		fetchData();
+	}, []);
 
 	return (
 		
 		<section className="body-pdp">
 			<div className="product-desc">
 				<Image className="product-image" 
-					src="https://lancome.vteximg.com.br/arquivos/ids/158506/Miracle.jpg?v=636481500859400000" 
+					src={ details.image_url } 
 					thumbnail 
 				/>
 
 				<div className="info-product">
-					<h2 className="title">Perfume Miracle Lancôme</h2>
+					<h2 className="title">{ details.title }</h2>
 
 					<span className="avaliacao">
 						<IoMdStar /> 
@@ -30,27 +65,20 @@ const ProductPage = () => {
 						<IoMdStarHalf /> (64)
 					</span>
 
-					<p className="description">
-						Descrição de um perfume bom dms, mas é provisória pq daqui 
-						a pouco vai fica dinâmica então vo saca fora essa descrição
-						provisória mas que vai me ajudar muito a medir o espaço que 
-						eu preciso pra ter noção de como vai ficar a página dps de add uma descrição dinamica braba
-					</p>
+					<p className="description">{ details.description }</p>
 
 					<Form.Group className="quantity">
 						<Form.Label>Quantity:</Form.Label>
 						<Form.Control as="select">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+							{
+								listOption(details)
+							}
 						</Form.Control>
 					</Form.Group>
 
 					<NumberFormat className="price" value={ 899.99 } displayType={ 'text' } thousandSeparator={ true } prefix={ '$ ' } />
 
-					<button className="buy">Buy product <AiOutlineShoppingCart className="icon-button" /></button>
+					<button className="buy">Add Cart <AiOutlineShoppingCart className="icon-button" /></button>
 				</div>
 
 			</div>
