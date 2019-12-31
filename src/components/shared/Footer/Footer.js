@@ -41,6 +41,10 @@ const Footer = () => {
 					</div>
 				</div>
 			</div>
+			<hr className="divisor" />
+			<p style={{ textAlign: 'center', marginBottom: '-1%' }}>
+				© Copyright 2019 - At moment perfumyla.com.br - All Rights Reserved
+			</p>
 		</footer>
 	);
 }
