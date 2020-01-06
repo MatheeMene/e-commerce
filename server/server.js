@@ -12,13 +12,20 @@ const SECRET     = 'bef5c2df9cc58bec729fd7b7c0e2819429553015873b1452d396d7e0c26c
 //echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 //sudo sysctl -p
 
-// BECAUSE CORS POLICY
-app.use('*', function(req, res, next) {
-	res.header("Access-Control-Allow-Origin: *");
-	res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
-	res.header("Access-Control-Allow-Headers: Content-Type");
-	next();
-});
+//Cors Policy
+app.use(function( req, res, next ) {
+	res.header("Access-Control-Allow-Origin", req.headers.origin);
+	res.header("Access-Control-Allow-Headers", "x-requested-with, content-type");
+	res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+	res.header("Access-Control-Allow-Credentials", "true");
+	res.header("Access-Control-Max-Age", "1000000000");
+	
+	if('OPTIONS' == req.method) {
+		res.sendStatus(200);
+	} else { 
+		next(); 
+	}
+ });
 
 //Configurando o body parser para pegar POSTS mais tarde
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -119,9 +126,8 @@ sql.connect(config, err => {
 		request.query(`SELECT * FROM person WHERE email = '${ email }';`, (err, recordset) => {
 
 			const response = recordset.recordset; //fazer if usuario existe
-			console.log(response.length);
 
-			try {
+			if(response.length > 0) {
 
 				const authUser = {
 					id:       response[0].id,
@@ -129,15 +135,16 @@ sql.connect(config, err => {
 					email:    response[0].email,
 					password: response[0].password
 				}
-
+				
 				if(authUser.email === email && authUser.password === passwordFromFront) {
 					let auth = true;
-
+					
 					jwt.sign({ authUser }, SECRET, (err, token) => {
 						res.send({ token, auth });
 					});
 				}
-			} catch(e) {
+
+			} else {
 				let auth = false;
 				res.send({ MSG, auth })
 			}
