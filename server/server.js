@@ -4,15 +4,19 @@ const sql        = require("mssql");
 const config     = require('./database');
 const app        = express();
 const router     = express.Router();
+const jwt        = require('jsonwebtoken');
+const cripto     = require('./cripto/Cripto');
 const PORT       = 4000;
+const SECRET     = 'bef5c2df9cc58bec729fd7b7c0e2819429553015873b1452d396d7e0c26cfac3d44a1cc42c45d3084ba48a74ac45827155c28bf71dfbc340dcd00efa892661ea';
 
 //echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 //sudo sysctl -p
 
 // BECAUSE CORS POLICY
-app.use(function (req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, application/json");
+app.use('*', function(req, res, next) {
+	res.header("Access-Control-Allow-Origin: *");
+	res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
+	res.header("Access-Control-Allow-Headers: Content-Type");
 	next();
 });
 
@@ -29,13 +33,8 @@ sql.connect(config, err => {
 	
 	const request = new sql.Request();
 	
-	router.post('/createproduct', (req, res) => {
+	router.post('/api/createproduct', (req, res) => {
 
-		const title       = req.body.title;
-		const description = req.body.description;
-		const quantity    = parseInt(req.body.quantity);
-		const price       = parseFloat(req.body.price);
-		const imageUrl    = req.body.imageUrl;
 		const weekOffer   = req.body.weekOffer;
 
 		request.query(`INSERT INTO product(title, description, quantity, price, image_url, week_offer) 
@@ -50,16 +49,18 @@ sql.connect(config, err => {
 		});
 	});
 
-	router.post('/createuser', (req, res) => {
+	router.post('/api/createuser', (req, res) => {
 
-		const name           = req.body.firstName;
-		const surname        = req.body.lastName;
-		const email          = req.body.email;
-		const password       = req.body.password;
-		const repeatPassword = req.body.repeatPassword;
+		const name            = req.body.firstName;
+		const surname         = req.body.lastName;
+		const email           = req.body.email;
+		const password        = req.body.password;
+		const repeatPassword  = req.body.repeatPassword;
+		const criptoPassword  = cripto(password);
+		const rcriptoPassword = cripto(repeatPassword);
 
 		request.query(`INSERT INTO person(name, last_name, email, password, repeat_password) 
-		VALUES('${ name }', '${ surname }', '${ email }', '${ password }', '${ repeatPassword }';)`
+		VALUES('${ name }', '${ surname }', '${ email }', '${ criptoPassword }', '${ rcriptoPassword }');`
 		, (err, recordset) => {
 
 			if(err) {
@@ -70,7 +71,7 @@ sql.connect(config, err => {
 		});
 	});
 
-	router.get('/weekoffer', (req, res) => {
+	router.get('/api/weekoffer', (req, res) => {
 
 		request.query(`SELECT * FROM product WHERE week_offer = 'true';`, (err, recordset) => {
 
@@ -82,7 +83,7 @@ sql.connect(config, err => {
 		});
 	});
 
-	router.get('/allproducts', (req, res) => {
+	router.get('/api/allproducts', (req, res) => {
 
 		request.query(`SELECT * FROM product;`, (err, recordset) => {
 			if(err) {
@@ -93,7 +94,7 @@ sql.connect(config, err => {
 		});
 	});
 
-	router.post('/product/:id', (req, res) => {
+	router.post('/api/product/:id', (req, res) => {
 
 		const id = req.params.id;
 
@@ -106,15 +107,39 @@ sql.connect(config, err => {
 		});
 	});
 
-	router.post('/login', (req, res) => {
+	router.post('/api/login', (req, res) => {
 
-		const email = req.body.email;
+		const { email }    = req.body;
+		const { password } = req.body;
 
-		request.query(`SELECT email, password FROM person WHERE email = ${ email };`, (err, recordset) => {
-			if(err) {
-				console.log(err);
-			} else {
-				res.send(recordset.recordset);
+		const passwordFromFront = cripto(password);
+
+		const MSG = "Email ou senha incorretos";
+
+		request.query(`SELECT * FROM person WHERE email = '${ email }';`, (err, recordset) => {
+
+			const response = recordset.recordset; //fazer if usuario existe
+			console.log(response.length);
+
+			try {
+
+				const authUser = {
+					id:       response[0].id,
+					name:     response[0].name,
+					email:    response[0].email,
+					password: response[0].password
+				}
+
+				if(authUser.email === email && authUser.password === passwordFromFront) {
+					let auth = true;
+
+					jwt.sign({ authUser }, SECRET, (err, token) => {
+						res.send({ token, auth });
+					});
+				}
+			} catch(e) {
+				let auth = false;
+				res.send({ MSG, auth })
 			}
 		});
 	});

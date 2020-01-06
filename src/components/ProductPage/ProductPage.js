@@ -76,7 +76,7 @@ const ProductPage = props => {
 						</Form.Control>
 					</Form.Group>
 
-					<NumberFormat className="price" value={ 899.99 } displayType={ 'text' } thousandSeparator={ true } prefix={ '$ ' } />
+					<NumberFormat className="price" value={ details.price } displayType={ 'text' } thousandSeparator={ true } prefix={ '$ ' } />
 
 					<button className="buy">Add Cart <AiOutlineShoppingCart className="icon-button" /></button>
 				</div>
