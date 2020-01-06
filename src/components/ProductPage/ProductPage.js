@@ -31,7 +31,7 @@ const ProductPage = props => {
 		
 		try {
 
-			let { data } = await Axios.post(`http://localhost:4000/product/${ params.id }`, {});
+			let { data } = await Axios.post(`http://localhost:4000/api/product/${ params.id }`, {});
 			setDetails(data[0]);
 
 		} catch (err) {
