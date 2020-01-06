@@ -27,6 +27,7 @@ const Login = () => {
 		if(auth === true) {
 			
 			const { token } = data;
+			setToken(token);
 			console.log(token);
 
 		} else {
