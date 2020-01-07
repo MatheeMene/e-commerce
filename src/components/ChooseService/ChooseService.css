@@ -32,12 +32,14 @@
 .add-week-offers {
     border-bottom: 8px solid black;
     border-right: 8px solid black;
+    border-top: 8px solid black;
     width: 50%;
     transition: .8s;
 }
 .add-week-offers:hover {
     border-bottom: 8px solid whitesmoke;
     border-right: 8px solid whitesmoke;
+    border-top: 8px solid whitesmoke;
     background-color: rgba(128, 0, 128, .5);
     transition: .8s;
 }
@@ -45,11 +47,13 @@
 .add-all-products {
     border-bottom: 8px solid black;
     border-left: 8px solid black;
+    border-top: 8px solid black;
     width: 50%;
 }
 .add-all-products:hover {
     border-bottom: 8px solid whitesmoke;
     border-left: 8px solid whitesmoke;
+    border-top: 8px solid whitesmoke;
     background-color:  rgba(65, 105, 225, .5);
     transition: .8s;
 }

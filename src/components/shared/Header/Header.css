@@ -38,6 +38,7 @@
 .header-links {
 	font-family: 'Work Sans';
 	font-size: 1.2rem;
+	padding-top: .6rem;
 	padding-bottom: .5rem;
 	padding-left: 10.6%;
 	padding-right: 10.6%;
@@ -77,10 +78,7 @@
 	-webkit-transition-timing-function: ease-out;
 	transition-timing-function: ease-out;
   }
-  .header-links:hover, .header-links:focus, .header-links:active {
-	color: #000;
-  }
-  .header-links:hover:before, .header-links:focus:before, .header-links:active:before {
+  .header-links:hover:before, .header-links:active:before {
 	-webkit-transform: scaleX(1);
 	transform: scaleX(1);
   }
