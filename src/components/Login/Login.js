@@ -1,11 +1,10 @@
-import React, { useState }     from 'react';
-// import { Redirect }            from 'react-router-dom';
-import { setToken } from '../../services/Authentic';
+import React, { useState } from 'react';
+import { setToken }        from '../../services/Authentic';
 //Style
 import './Login.css';
 import Axios from 'axios';
 
-const Login = () => {
+const Login = props => {
 
 	const [inputs, setInputs] = useState({ email: '', password: '' });
 
@@ -29,6 +28,7 @@ const Login = () => {
 			const { token } = data;
 			setToken(token);
 			console.log(token);
+			props.history.push('/');
 
 		} else {
 			const { MSG } = data;

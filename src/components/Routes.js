@@ -20,8 +20,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 			isAuthenticated() ? (
 				<Component {...props} />
 			) : (
-					<Redirect to={{ pathname: "/", state: { from: props.location } }} />
-				)
+				<Redirect to={{ pathname: "/login", state: { from: props.location } }} />
+			)
 		}
 	/>
 );
@@ -29,16 +29,16 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
 
 	<Switch>
-		<Route exact path="/"                component={ Home }          />
-		<Route exact path="/services"        component={ ChooseService } />
-		<Route exact path="/addproduct"      component={ CreateProduct } />
-		<Route exact path="/signup"          component={ SignUp }        />
-		<Route exact path="/weekoffer"       component={ WeekOffers }    />
-		<Route exact path="/allproducts"     component={ AllProducts }   />
-		<Route exact path="/productpage/:id" component={ ProductPage }   />
-		<Route exact path="/login"           component={ Login }         />
-		<Route exact path="/cart"            component={ Cart }          />
-		<Route component={ NotFound }                                    />
+		<Route exact path="/"                       component={ Home }          />
+		<Route exact path="/signup"                 component={ SignUp }        />
+		<Route exact path="/weekoffer"              component={ WeekOffers }    />
+		<Route exact path="/allproducts"            component={ AllProducts }   />
+		<Route exact path="/productpage/:id"        component={ ProductPage }   />
+		<Route exact path="/login"                  component={ Login }         />
+		<PrivateRoute exact path="/services"   component={ ChooseService } />
+		<PrivateRoute exact path="/addproduct" component={ CreateProduct } />
+		<PrivateRoute exact path="/cart"       component={ Cart }          />
+		<Route component={ NotFound }                                      />
 	</Switch>
 );
 
