@@ -48,6 +48,7 @@ const ProductPage = props => {
 	return (
 		
 		<section className="body-pdp">
+			<hr className="hr-pdp" />
 			<div className="product-desc">
 				<Image className="product-image" 
 					src={ details.image_url } 

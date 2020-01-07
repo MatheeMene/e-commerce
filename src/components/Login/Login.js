@@ -29,6 +29,7 @@ const Login = props => {
 			setToken(token);
 			console.log(token);
 			props.history.push('/');
+			window.location.reload();
 
 		} else {
 			const { MSG } = data;

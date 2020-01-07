@@ -1,30 +1,44 @@
-import React from 'react';
+import React    from 'react';
 import { Link } from 'react-router-dom';
-//STYLE
+//Components
+import { isAuthenticated, removeToken } from '../../../services/Authentic';
+//Style
+import 'normalize.css';
 import './Header.css';
-import Logo from '../../../assets/images/logo.png';
 
 const Header = () => {
+
+	const logout = () => {
+		removeToken();
+		window.location.reload();
+	}
+
+	const SignUpOrLogin = () => (
+
+		isAuthenticated() ? (
+			<Link className='header-links' to='/' onClick={ () => logout() } >Logout</Link>
+		) : (
+			<Link className='header-links' to='Login'>Login</Link>
+		)
+	);
 	
 	return(
 		<header className='navbar'>
-			<ul className='nav-list-left'>
-				<li>
-					<Link to='/'>Home</Link>
-				</li>
-				<li>
-					<Link to='/services'>Services</Link>
-				</li>
-			</ul>
-			<img className='logo' src={ Logo } alt='Logo' />
-			<ul className='nav-list-right'>
-				<li>
-					<Link to="/naosei">Profile</Link>
-				</li>
-				<li>
-					<Link to='/signup'>SignUp</Link>
-				</li>
-			</ul>
+			<div className='logo'>
+				<Link to='/'>Perfumyla</Link>
+			</div>
+			<div className='header-list'>
+				<Link className='header-links' to='/about'>
+					About
+				</Link>
+				<Link className='header-links' to='/services'>
+					Services
+				</Link>
+				<Link className='header-links' to='/profile'>
+					Profile
+				</Link>
+				<SignUpOrLogin />
+			</div>
 		</header>
 	);
 
