@@ -6,7 +6,7 @@ const useAddProductForm = () => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		fetch('http://localhost:4000/createproduct', {
+		fetch('http://localhost:4000/api/createproduct', {
 			method: 'POST',
 			headers: {
 				'Accept':       'application/json',

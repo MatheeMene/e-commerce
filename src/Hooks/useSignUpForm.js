@@ -6,7 +6,7 @@ const useSignUpForm = () => {
 	const handleSubmit = event => {
 		event.preventDefault();
 	
-		fetch('http://localhost:4000/createuser', {
+		fetch('http://localhost:4000/api/createuser', {
 			method: 'POST',
 			headers: {
 				'Accept':       'application/json',
