@@ -9,8 +9,9 @@ import './NotFound.css'
 const NotFound = () => (
 
 	<section className="body-not-found">
-		<h1 className="title-not-found">Page not found, <Link to="/" className="go-home">go home</Link></h1>
+		<hr className="hr-404" />
 		<Image className="image-not-found" src={ NotFoundImage } fluid />
+		<h1 className="title-not-found">Page not found, <Link to="/" className="go-home">go home</Link></h1>
 	</section>
 );
 

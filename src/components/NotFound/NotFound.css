@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+
 .body-not-found {
     width: 100%;
-    padding-top: 9em;
     padding-bottom: 9em;
     display: flex;
     flex-direction: column;
@@ -8,14 +9,16 @@
 }
 .title-not-found {
     margin-bottom: 5%;
+    font-family: 'Dancing Script';
 }
 .go-home {
     color: lightpink;
     transition: .5s;
+    font-family: 'Dancing Script';
 }
 .go-home:hover {
     text-decoration: none;
-    color: lightcoral;
+    color: firebrick;
     transition: .5s;
 }
 .image-not-found {
