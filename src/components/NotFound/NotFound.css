@@ -22,5 +22,10 @@
     transition: .5s;
 }
 .image-not-found {
-    width: 35%;
+    width: 20%;
+}
+.not-found {
+    font-family: 'Dancing Script';
+    font-size: 2rem;
+    font-weight: bold;
 }
