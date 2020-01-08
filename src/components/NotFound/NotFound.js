@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 //Style
 import NotFoundImage from '../../assets/images/404.png';
-import Hr            from '../shared/Hr/Hr';
 import './NotFound.css'
 
 const NotFound = () => (

@@ -125,7 +125,7 @@ sql.connect(config, err => {
 
 		request.query(`SELECT * FROM person WHERE email = '${ email }';`, (err, recordset) => {
 
-			const response = recordset.recordset; //fazer if usuario existe
+			const response = recordset.recordset;
 
 			if(response.length > 0) {
 
