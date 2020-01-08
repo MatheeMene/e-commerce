@@ -1,4 +1,5 @@
-import React from 'react';
+import React    from 'react';
+import { Link } from 'react-router-dom';
 //Components
 import useSignUpForm from '../../Hooks/useSignUpForm';
 import './SignUp.css';
@@ -43,7 +44,7 @@ const SignUp = () => {
 				</div>
 				<div className="login-box">
 					<button className="submit-button" type="submit">Cadastrar</button>
-					<span className="login-button">Entrar <AiOutlineArrowRight /></span>
+					<Link to='/login' className="login-button">Entrar <AiOutlineArrowRight /></Link>
 				</div>
 			</form>
 		</div>

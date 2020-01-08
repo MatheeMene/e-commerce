@@ -1,6 +1,87 @@
-.login-hr {
+.login-body {
+	padding-top: 2rem;
+	padding-bottom: 5rem;
+	background-image: url('../../assets/images/SignUpWallpaper.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.box-login {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 4rem;
+	margin-top: 2rem;
+	margin-left: 35%;
+	margin-right: 35%;
+	width: 30%;
+	box-shadow: 2px 2px 8px 0 #000;
+	border-radius: 8px;
+	background-color: white;
+}
+.login-title {
+	text-align: center;
+	margin-top: 3rem;
+}
+.field-input {
+	display: block;
+	width: 20rem;
 	border: 0;
-	height: 1px;
-	width: 80%;
-	background-image: linear-gradient(to right, rgba(169, 169, 169, 0), rgba(169, 169, 169, .75), rgba(169, 169, 169, 0));
+	font-size: 1.3rem;
+	padding: .8rem;
+	background-color: white;
+	border-bottom: 1px solid #f2e8e6;
+}
+.field-input:focus {
+	border-bottom: 1.2px solid lightpink;
+}
+.button-login {
+	margin-top: 2rem;
+	width: 20rem;
+	border: 0;
+	padding: 1rem;
+	font-size: 1.3rem;
+	background-color: lightpink;
+	color: white;
+	transition: .6s ease-in-out;
+	border-radius: 5px;
+	border: .15rem solid lightpink;
+	transition: .5s;
+}
+.button-login:hover {
+	border: .15rem solid lightpink;
+	background-color: white;
+	color: palevioletred;
+	transition: .5s;
+}
+.fields-login {
+	margin-left: 20%;
+}
+.spinner-login {
+	margin-right: 2rem;
+	margin-left: -4rem;
+	font-size: 4.5rem;
+}
+.button-login:focus, .field-input:focus {
+	outline: 0;
+}
+.label-login {
+	font-size: 1.2rem;
+}
+.have-account {
+	margin-top: 3rem;
+}
+.have-account a {
+	font-weight: bold;
+	font-size: 1.2rem;
+	color: palevioletred;
+}
+.have-account a:hover {
+	color: palevioletred;
+}
+
+/* Tirar as cores do autocomplete do Chrome */
+.field-input:-webkit-autofill,
+.field-input:-webkit-autofill:hover, 
+.field-input:-webkit-autofill:focus, 
+.field-input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
