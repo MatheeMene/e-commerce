@@ -18,7 +18,7 @@ const Header = () => {
 		isAuthenticated() ? (
 			<Link className='header-links' to='/' onClick={ () => logout() } >Logout</Link>
 		) : (
-			<Link className='header-links' to='Login'>Login</Link>
+			<Link className='header-links' to='/login'>Login</Link>
 		)
 	);
 	

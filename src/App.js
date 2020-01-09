@@ -5,20 +5,17 @@ import Header from './components/shared/Header/Header';
 import Footer from './components/shared/Footer/Footer';
 import Routes from './components/Routes';
 
-const App = () => {
+const App = () => (
 
-	return (
+	<Router>
+		<div>
 
-		<Router>
-			<div>
+			<Header />
+			<Routes />
+			<Footer />
 
-				<Header />
-				<Routes />
-				<Footer />
-
-			</div>
-		</Router>
-	);
-}
+		</div>
+	</Router>
+);
 
 export default App;

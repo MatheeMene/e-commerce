@@ -1,0 +1,52 @@
+.profile-section {
+	padding-bottom: 5rem;
+	padding-top: 3rem;
+	padding-left: 8%;
+	padding-right: 5%;
+	display: flex;
+	flex-direction: row;
+}
+.picture-desc {
+	width: 35%;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+.profile-image {
+	width: 17rem;
+	height: 17rem;
+}
+.profile-name {
+	font-weight: bold;
+	font-size: 1.5rem;
+	margin-top: 2rem;
+}
+.profile-date {
+	font-weight: bold;
+	font-size: 1.15rem;
+}
+.profile-data {
+	width: 100%;
+	margin-top: 2rem;
+}
+.profile-field {
+	display: block;
+	width: 20rem;
+	border: 0;
+	border-bottom: .091rem solid #000;
+}
+.profile-field:focus {
+	outline: 0;
+}
+.profile-field:disabled {
+	background-color: white;
+}
+.profile-icon {
+	font-size: 2rem;
+	margin-top: -1.2rem;
+	margin-right: .8rem;
+}
+.right-column label, .left-column label  {
+	font-size: 1.2rem;
+	margin-top: 1.3rem;
+}

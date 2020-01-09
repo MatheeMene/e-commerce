@@ -12,6 +12,7 @@ import ProductPage   from './ProductPage/ProductPage';
 import NotFound      from './NotFound/NotFound';
 import Login         from './Login/Login';
 import Cart          from './Cart/Cart';
+import Profile         from './Profile/Profile';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
 	<Route
@@ -29,17 +30,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
 
 	<Switch>
-		<Route exact path="/"                       component={ Home }          />
-		<Route exact path="/signup"                 component={ SignUp }        />
-		<Route exact path="/weekoffer"              component={ WeekOffers }    />
-		<Route exact path="/allproducts"            component={ AllProducts }   />
-		<Route exact path="/productpage/:id"        component={ ProductPage }   />
-		<Route exact path="/login"                  component={ Login }         />
+		<Route exact path="/"                component={ Home }          />
+		<Route exact path="/signup"          component={ SignUp }        />
+		<Route exact path="/weekoffer"       component={ WeekOffers }    />
+		<Route exact path="/allproducts"     component={ AllProducts }   />
+		<Route exact path="/productpage/:id" component={ ProductPage }   />
+		<Route exact path="/login"           component={ Login }         />
+		<Route exact path="/profile"         component={ Profile }       />
 		<PrivateRoute exact path="/services"   component={ ChooseService } />
 		<PrivateRoute exact path="/addproduct" component={ CreateProduct } />
 		<PrivateRoute exact path="/cart"       component={ Cart }          />
 		<Route component={ NotFound }                                      />
 	</Switch>
+
 );
 
 export default Routes;
