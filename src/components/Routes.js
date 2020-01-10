@@ -36,7 +36,8 @@ const Routes = () => (
 		<Route exact path="/allproducts"     component={ AllProducts }   />
 		<Route exact path="/productpage/:id" component={ ProductPage }   />
 		<Route exact path="/login"           component={ Login }         />
-		<Route exact path="/profile"         component={ Profile }       />
+		
+		<PrivateRoute exact path="/profile"    component={ Profile }       />
 		<PrivateRoute exact path="/services"   component={ ChooseService } />
 		<PrivateRoute exact path="/addproduct" component={ CreateProduct } />
 		<PrivateRoute exact path="/cart"       component={ Cart }          />

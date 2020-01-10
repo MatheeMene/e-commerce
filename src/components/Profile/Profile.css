@@ -34,12 +34,14 @@
 	width: 20rem;
 	border: 0;
 	border-bottom: .091rem solid #000;
+	background-color: white;
 }
 .profile-field:focus {
 	outline: 0;
 }
 .profile-field:disabled {
 	background-color: white;
+	border-color: darkgrey;
 }
 .profile-icon {
 	font-size: 2rem;
@@ -49,4 +51,38 @@
 .right-column label, .left-column label  {
 	font-size: 1.2rem;
 	margin-top: 1.3rem;
+}
+.edit-button-profile {
+	width: 57%;
+	margin-left: 8%;
+	margin-top: 2rem;
+	padding: .7rem;
+	border: 2px solid #000;
+	font-size: 1.3rem;
+	background-color: white;
+	transition: .3s;
+}
+.edit-button-profile:focus {
+	outline: 0;
+}
+.edit-profile-icon {
+	font-size: 1.6rem;
+}
+.profile-field:-webkit-autofill,
+.profile-field:-webkit-autofill:hover, 
+.profile-field:-webkit-autofill:focus, 
+.profile-field:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+::-webkit-input-placeholder {
+	color: lightgray;
+}
+:-moz-placeholder { /* Firefox 18- */
+	color: lightgray;  
+}
+::-moz-placeholder {  /* Firefox 19+ */
+	color: lightgray;  
+}
+:-ms-input-placeholder {  
+	color: lightgray;  
 }
