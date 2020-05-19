@@ -1,6 +1,6 @@
 module.exports = config = {
 	user: 'sa',
-	password: 'ABc12345',
+	password: 'ABc123456789',
 	server: 'localhost', 
-	database: 'comerce' 
+	database: 'commerce' 
 };

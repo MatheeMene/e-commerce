@@ -5,6 +5,7 @@ import Axios                from '../../Axios';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { User } from '../../models/user'
 //Icons
 import { 
 	FaUserCircle,
@@ -20,10 +21,10 @@ import './Profile.css';
 
 const Profile = () => {
 
-	const [ profileData, setProfileData ]       = useState({});
+	const [ profileData, setProfileData ]       = useState(new User());
 	const [ toggleDisabled, setToggleDisabled ] = useState('disabled');
 	const [ toggleButton, setToggleButton ]     = useState('Edit Profile');
-	const [ inputs, setInputs ]                 = useState({ name: '', email: profileData.email, rg: '', gender: '', surname: profileData.last_name, bornDate: '', CPF: '', password: profileData.password });
+	const [ inputs, setInputs ]                 = useState(profileData);
 
 	const actualDateFormated = () => {
 		let data = new Date(profileData.registration_date),
@@ -46,11 +47,13 @@ const Profile = () => {
 	}
 
 	useEffect(() => {
-		
 		Axios.post('http://localhost:4000/api/profile', { token: getToken() })
-		.then(response => setProfileData(response.data[0]));
-		console.log();
-		
+		.then(response => {
+			let data = response.data[0];
+			console.log(data);
+			setProfileData(data);
+			setInputs(data);
+		});
 	}, []);
 
 
@@ -73,28 +76,28 @@ const Profile = () => {
 						<div>
 							<FaUserCircle className='profile-icon'/>
 							<label> Name:
-								<input className='profile-field' type='text' name='name' onChange={ handleInputChange } disabled={ toggleDisabled } />
+								<input value={inputs.name} className='profile-field' type='text' name='name' onChange={ handleInputChange } disabled={ toggleDisabled } />
 							</label>
 						</div>
 						<div>
 							<FaEnvelope className='profile-icon'/>
 							<label> Email:
-								<input className='profile-field' type='text' name='email' onChange={ handleInputChange } disabled={ toggleDisabled }/>
+								<input value={inputs.email} className='profile-field' type='text' name='email' onChange={ handleInputChange } disabled={ toggleDisabled }/>
 							</label>
 						</div>
 						<div>
 							<FaIdCard className='profile-icon'/>
 							<label> RG:
-								<input className='profile-field' type='text' name='rg' onChange={ handleInputChange } disabled={ toggleDisabled } />
+								<input value={inputs.rg} className='profile-field' type='text' name='rg' onChange={ handleInputChange } disabled={ toggleDisabled } />
 							</label>
 						</div>
 						<div>
 							<FaTransgenderAlt className='profile-icon'/>
 							<label> Gender:
-								<select className='profile-field' name='gender' onChange={ handleInputChange } disabled={ toggleDisabled }>
-									<option>--SELECT--</option>
+								<select value={inputs.gender} className='profile-field' name='gender' onChange={ handleInputChange } disabled={ toggleDisabled }>
+									<option value="">--SELECT--</option>
 									<option value='male'>Male</option>
-									<option value='Female'>Female</option>
+									<option value='female'>Female</option>
 									<option value='other'>Other</option>
 								</select>
 							</label>
@@ -104,25 +107,19 @@ const Profile = () => {
 						<div>
 							<FaUserCircle className='profile-icon'/>
 							<label> Surname:
-								<input className='profile-field' type='text' name='surname' onChange={ handleInputChange } disabled={ toggleDisabled }/>
+								<input value={inputs.last_name} className='profile-field' type='text' name='last_name' onChange={ handleInputChange } disabled={ toggleDisabled }/>
 							</label>
 						</div>
 						<div>
 							<FaCalendarAlt className='profile-icon'/>
 							<label> Born Date:
-								<input className='profile-field' type='text' name='bornDate' onChange={ handleInputChange } disabled={ toggleDisabled }/>
+								<input value={inputs.born_date} className='profile-field' type='text' name='bornDate' onChange={ handleInputChange } disabled={ toggleDisabled }/>
 							</label>
 						</div>
 						<div>
 							<FaIdCard className='profile-icon'/>
 							<label> CPF:
-								<input className='profile-field' type='text' name='CPF' onChange={ handleInputChange } disabled={ toggleDisabled }/>
-							</label>
-						</div>
-						<div>
-							<FaLock className='profile-icon'/>
-							<label> Password:
-								<input className='profile-field' type='password' name='password' onChange={ handleInputChange } disabled={ toggleDisabled } />
+								<input value={inputs.cpf} className='profile-field' type='text' name='CPF' onChange={ handleInputChange } disabled={ toggleDisabled }/>
 							</label>
 						</div>
 						<button className='edit-button-profile' name='buttonProfile' onClick={ () => toggleField() } ><FaUserEdit className='edit-profile-icon'/> { toggleButton }</button>
