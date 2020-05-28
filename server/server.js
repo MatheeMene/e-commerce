@@ -15,12 +15,12 @@ const SECRET     = 'bef5c2df9cc58bec729fd7b7c0e2819429553015873b1452d396d7e0c26c
 //Cors Policy
 app.use(function( req, res, next ) {
 	res.header("Access-Control-Allow-Origin", req.headers.origin);
-	res.header("Access-Control-Allow-Headers", "x-requested-with, content-type");
+	res.header("Access-Control-Allow-Headers", "x-requested-with, content-type, x-access-token");
 	res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
 	res.header("Access-Control-Allow-Credentials", "true");
 	res.header('Access-Control-Expose-Headers', 'x-access-token');
 	res.header("Access-Control-Max-Age", "1000000000");
-	
+
 	if('OPTIONS' == req.method) {
 		res.sendStatus(200);
 	} else { 
@@ -169,9 +169,17 @@ sql.connect(config, err => {
 		});
 	});
 
-	router.post('/api/profile', verifyJWT, (req, res) => {
+	router.get('/api/profile', verifyJWT, (req, res) => {
+		const token = req.header("x-access-token");
+		let decoded = jwt.verify(token, SECRET);
 		
-		const token = req.body.token;
+		const { authUser } = decoded;
+		
+		request.query(`SELECT * FROM person WHERE email = '${ authUser.email }'`, (err, recordset) => res.send(recordset.recordset));
+	});
+
+	router.post('/api/profile', verifyJWT, (req, res) => {
+		const token = req.header("x-access-token");
 		let decoded = jwt.verify(token, SECRET);
 		
 		const { authUser } = decoded;
