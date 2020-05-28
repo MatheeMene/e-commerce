@@ -6,16 +6,35 @@
 	display: flex;
 	flex-direction: row;
 }
-.picture-desc {
-	width: 35%;
-	display: flex;
-	flex-flow: column;
-	align-items: center;
+
+.profile-pic {
+	width: 20vw;
+	height: 20vw;
+	margin-right: 5px;
+	border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
 }
-.profile-image {
-	width: 17rem;
-	height: 17rem;
+
+.profile-pic:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
 }
+
+.profile-pic span {
+    display: inline-block;
+    padding-top: 50%;
+}
+
 .profile-name {
 	font-weight: bold;
 	font-size: 1.5rem;

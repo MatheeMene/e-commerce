@@ -47,7 +47,7 @@ const Profile = () => {
 	}
 
 	useEffect(() => {
-		Axios.post('http://localhost:4000/api/profile', { token: getToken() })
+		Axios.get('http://localhost:4000/api/profile', { headers: {'x-access-token': getToken() }})
 		.then(response => {
 			let data = response.data[0];
 			console.log(data);
@@ -61,12 +61,11 @@ const Profile = () => {
 	
 	return (
 		<section className='profile-section'>
-
-			<div className='picture-desc'>
-				<Image className='profile-image' src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSnsQ-LiBqIzmTRpyK5Fh1FQ8fHjWuskDoJVUAMk_9vugOKQb9K" roundedCircle />
-				<p className='profile-name'>{ profileData.name }</p>
-				<p className="profile-date">Account created at: { actualDateFormated() }</p>
-			</div>
+			<a href="#" className="profile-pic">	
+				<div className="profile-pic" style={{backgroundImage: `url(https://sportbuzz.uol.com.br/media/_versions/gettyimages-1186649760_MvE2Vfu_widelg.jpg)`}} >
+					<span>Alterar Foto</span>
+				</div>
+			</a>
 
 			<div style={{ borderLeft: '.1rem solid #000', height: '28rem' }}></div>
 
